@@ -13,10 +13,12 @@ describe('US-012-Funcionalidade: Cadastro de Usuário', () => {
     cy.get('#signup-email').type(uniqueEmail)
     cy.get('#signup-phone').type('11971666817')
     cy.get('#signup-password').type('Matheus!12345')
+    cy.screenshot('cadastro-formulario-preenchido')
     cy.get('#signup-button').click()
     
     // Aguarda a resposta aparecer no DOM e verifica se o cadastro foi realizado com sucesso
     cy.get('#signup-response', { timeout: 10000 }).should('contain', 'Cadastro realizado com sucesso!')
+    cy.screenshot('cadastro-sucesso')
   })
   
   it('Deve validar email já cadastrado', () => {
@@ -32,6 +34,7 @@ describe('US-012-Funcionalidade: Cadastro de Usuário', () => {
     
     // Verifica se retorna a mensagem de email já cadastrado
     cy.get('#signup-response', { timeout: 10000 }).should('contain', 'Este email já está cadastrado')
+    cy.screenshot('cadastro-email-duplicado')
   })
 })
 
@@ -44,6 +47,7 @@ describe('US-015-Recomendações de Filmes', () => {
     
     // Aguarda pelo menos 5 filmes serem carregados (conforme o script.js)
     cy.get('#recommendations > div', { timeout: 10000 }).should('have.length', 5)
+    cy.screenshot('recomendacoes-carregadas')
     
     // Clica nas imagens dos filmes recomendados
     cy.get('#recommendations > div:nth-child(1) img').click()
@@ -70,6 +74,7 @@ describe('US-0001-Buscar Filme', () => {
     // Aguarda os resultados da busca aparecerem
     cy.get('#results-section', { timeout: 10000 }).should('not.be.empty')
     cy.get('#results-section div', { timeout: 10000 }).should('exist')
+    cy.screenshot('busca-filme-matrix-resultados')
     
     // Limpa a busca
     cy.get('#clear-button').click()
@@ -86,6 +91,7 @@ describe('US-0001-Buscar Filme', () => {
     
     // Verifica se exibe mensagem de filme não encontrado
     cy.get('#results-section', { timeout: 10000 }).should('contain', 'Filme não encontrado')
+    cy.screenshot('busca-filme-nao-encontrado')
   })
   
   it('Deve validar campo de busca vazio', () => {
