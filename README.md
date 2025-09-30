@@ -304,6 +304,23 @@ rm -rf node_modules package-lock.json
 npm install
 ```
 
+## 📋 Boas Práticas e Manutenção
+
+### .gitignore
+O projeto agora inclui um arquivo `.gitignore` que previne o commit de:
+- 📦 `node_modules/` - Dependências (reinstaladas via npm install)
+- 📸 `cypress/screenshots/` - Screenshots de testes
+- 🎥 `cypress/videos/` - Vídeos de testes
+- 📝 `.history/` - Histórico do editor local
+- 🔧 Arquivos de configuração de IDE
+- 🌍 Variáveis de ambiente
+
+### Recomendações
+1. **Sempre usar npm ci** no CI/CD para builds determinísticos
+2. **Manter package-lock.json** atualizado para garantir consistência
+3. **Revisar screenshots e vídeos** dos testes após falhas
+4. **Limpar artefatos locais** periodicamente (screenshots, vídeos, cache)
+
 ## 📄 Licença
 
 ISC License
