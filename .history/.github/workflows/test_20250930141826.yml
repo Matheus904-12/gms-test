@@ -12,6 +12,7 @@ jobs:
 
   - name: Start server
     run: npm start &
+    # O "&" coloca o servidor em segundo plano
 
   - name: Wait for server to be ready
     run: npx wait-on http://127.0.0.1:8080
