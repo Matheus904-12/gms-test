@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "npx http-server public -p 8080 -c-1",
     "test": "npx cypress run --browser chrome"
   },
   "keywords": [],
@@ -10,6 +11,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "cypress": "^15.3.0"
+    "cypress": "^15.3.0",
+    "http-server": "^14.1.1",
+    "wait-on": "^7.2.0"
   }
 }
